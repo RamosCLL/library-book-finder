@@ -1,0 +1,47 @@
+:host {
+  .dir-text{
+    opacity:0.69;
+    fill:#FFFFFF;
+    stroke:#979797;
+    stroke-miterlimit:10;
+  }
+  
+  .dir-shape{
+    fill:#979797;
+  }
+  
+  .indicator{
+    position:fixed;
+    bottom:15px;
+    left:15px;
+    width:150px;
+    height:150px;
+    .dir {
+      cursor: pointer;
+      &.active{
+        path.dir-shape{
+          opacity:1.0;fill:#FFFFFF;
+        }
+        path.dir-text{
+          opacity:1.0;fill:rgba(41,169,224,0.69);stroke:#29a9e0;
+        }
+      }
+      &:not(.active){
+        path.dir-shape{
+          opacity:1.0;fill:#979797;
+        }
+        path.dir-text{
+          opacity:0.69;fill:#FFFFFF;stroke:#979797;
+        }
+      }
+      &:hover {
+        path.dir-shape{
+          opacity:1.0;fill:#FFFFFF;
+        }
+        path.dir-text{
+          opacity:1.0;fill:rgba(41,169,224,1);stroke:#29a9e0;
+        }        
+      }
+    }
+  }
+}
