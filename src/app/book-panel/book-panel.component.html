@@ -1,0 +1,57 @@
+<div id="book-panel" [class.active]="toggle" [class.searchmode]="searchMode">
+  <div class="row panel-header-box">
+    <div class="col-lg-12">
+      <h2 class="panel-sub-header">{{shelf?.label}}</h2>
+      <p-progressSpinner strokeWidth="5" animationDuration="1s" *ngIf="loading"></p-progressSpinner>
+      <h1 class="panel-header">{{category?.label}}</h1>
+      <a class="close-panel" href="#" (click)="hidePanel($event)" title="Close this panel">
+        <i class="fa fa-arrow-right"></i>
+      </a>
+    </div>
+  </div> 
+  <div class="book-panel-box">
+      <div class="row book-panel-row" *ngFor="let book of books">
+          <div class="col-lg-2">
+            <a href="{{book.link}}" target="_blank">
+              <img class="book-pic" src="{{book.imageLink}}" />
+            </a>
+          </div>
+          <div class="col-lg-10">
+            <h3 class="book-title" [ngClass]="{'newbook' : book.isNew}">
+              <a href="{{book.link}}" target="_blank">
+                {{book.title}}
+              </a>
+            </h3>
+            <strong class="book-author">{{book.authors}}</strong>
+            <p class="book-description">{{book.description}}</p>
+            <small class="book-code">{{book?.shelfName}}</small>
+            <small class="book-callno">Call no.: {{book?.callNo}}</small>
+            <div class="container-booksaround" *ngIf="book.nearbyBooks" [class.hidden]="!book.showCarousel">
+              <a href="#"
+                class="switch" 
+                [ngClass]="{'close-carousel': book.showCarousel , 'open-carousel': !book.showCarousel}"
+                (click)="toggleCarousel($event, book)">Books around</a>
+              <ngx-carousel [inputs]="slideConfig" *ngIf="book.showCarousel">
+                  <ngx-item NgxCarouselItem *ngFor="let nearbyBook of book.nearbyBooks">
+                    <div class="booksaround-thumb">
+                      <a href="{{nearbyBook.link}}" target="_blank">
+                        <img class="book-pic" src="{{nearbyBook?.imageLink}}" />
+                      </a>
+                      <h3 class="book-title" [ngClass]="{'newbook' : nearbyBook?.isNew}" > 
+                        <a href="{{nearbyBook.link}}" target="_blank">
+                          {{book.title}} 
+                        </a>
+                      </h3>
+                      <strong class="book-author">{{nearbyBook?.authors.join(',')}}</strong>
+                      <p class="book-description lineclamp lineclamp-2">{{nearbyBook?.description}}</p>
+                    </div>
+                  </ngx-item>
+                <button NgxCarouselPrev class='leftRs'><i class="fa fa-chevron-left"></i></button>
+                <button NgxCarouselNext class='rightRs'><i class="fa fa-chevron-right"></i></button>
+              </ngx-carousel>
+            </div>
+          </div>
+      </div> <!-- row -->
+      <p-paginator [rows]="rows" [totalRecords]="length" (onPageChange)="paginate($event)"></p-paginator>
+  </div>
+</div>

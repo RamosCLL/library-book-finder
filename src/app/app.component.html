@@ -1,0 +1,65 @@
+<div id="wrapper">
+  <app-book-panel (onClose)="bookPanelClose($event)"></app-book-panel>
+
+  <div class="mobile-header mobile-only">
+      <button class="btn-menu" (click)="isOpen = !isOpen">
+          <i class="fa fa-bars"></i>
+      </button>
+      <div class="ui-inputgroup search-box">
+        <input type="text" pInputText placeholder="Search..." [(ngModel)]="query" (keydown.enter)="search($event)">
+        <button pButton type="button" label="" class="fa-search" (click)="search($event)"></button>
+      </div>
+  </div>
+
+  <div id="sidebar-wrapper" [class.open-mobile-sidebar]="isOpen">
+    <!-- <button class="btn-menu mobile-only" (click)="isOpen = !isOpen">
+        <i class="fa fa-bars"></i>
+    </button> -->
+    <div class="ui-inputgroup search-box desktop-only">
+      <input type="text" pInputText placeholder="Search..." [(ngModel)]="query" (keydown.enter)="search($event)">
+      <button pButton type="button" label="" class="fa-search" (click)="search($event)"></button>
+    </div>
+    <p-accordion *ngIf="shelfs?.length" (onOpen)="onTabOpen($event)" (onClose)="onTabClose($event)">
+      <ng-template ngFor let-shelf [ngForOf]="shelfs">
+        <p-accordionTab header="{{shelf.label}}" [selected]="shelf.value == activeShelf" id="shelf-{{shelf.value}}">
+          <ul>
+            <li *ngFor="let category of shelf.categories">
+              <a *ngIf="category.categories?.length < 1" (click)="openPanel($event, category)" href="#">{{category.label}}</a>
+              <ng-container *ngIf="category.categories?.length > 0">{{category.label}}</ng-container>
+              <ul>
+                <li *ngFor="let subCategory of category.categories">
+                  <a (click)="openPanel($event, subCategory)" href="#">{{subCategory.label}}</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </p-accordionTab>
+      </ng-template>
+    </p-accordion>
+  </div>
+
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <p-tabView [activeIndex]="activeWing" (onChange)="loadShelf($event)">
+            <p-tabPanel [selected]="true" header="North Wing" id="north-wing">
+              <app-map-north #mapNorth (onShelfClick)="shelfClick($event)" [found]="found[0]"></app-map-north>
+            </p-tabPanel>
+            <p-tabPanel header="East Wing" id="east-wing">
+              <app-map-east #mapEast (onShelfClick)="shelfClick($event)" [found]="found[1]"></app-map-east>
+            </p-tabPanel>
+            <p-tabPanel header="South Wing" id="south-wing">
+              <app-map-south #mapSouth (onShelfClick)="shelfClick($event)" [found]="found[2]"></app-map-south>
+            </p-tabPanel>
+            <p-tabPanel header="West Wing" id="west-wing">
+              <app-map-west #mapWest (onShelfClick)="shelfClick($event)" [found]="found[3]"></app-map-west>
+            </p-tabPanel>
+          </p-tabView>
+          <app-indicator [wing]="activeWing" (onChangeWing)="wingClick($event)"></app-indicator>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

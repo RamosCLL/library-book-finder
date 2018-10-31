@@ -1,0 +1,3 @@
+{
+  "/categories/:category/books": "/books?categories_contains=:category"
+}
