@@ -1,0 +1,65 @@
+:host {
+  .cls-1{
+    fill:#123f55;
+    stroke:#28576e;
+    stroke-width:2px;
+  }
+  .cls-1,.cls-3,.cls-4{
+    stroke-miterlimit:10;
+  }
+  .cls-2,.cls-6,.cls-7,.cls-8{
+    isolation:isolate;
+  }
+  .cls-2,.cls-6,.cls-8{
+    font-size:17px;
+  }
+  .cls-2{
+    fill:#cddbe0;
+    font-family:Helvetica-Bold, Helvetica;
+    font-weight:700;
+  }
+  .cls-3{
+    fill:none;
+  }
+  .cls-3,.cls-4{
+    stroke:#b1b1b1;
+  }
+  .cls-4{
+    fill:#e4e4e4;
+  }
+  .cls-5,.cls-6,.cls-8{
+    fill:#b1b1b1;
+  }
+  .cls-6,.cls-8{
+    font-family:ArialNarrow, Arial Narrow;
+  }
+  .cls-8{
+    letter-spacing:-0.02em;
+  }
+  //marker
+  .st0{fill:#123F55;stroke:#28576E;stroke-width:2;stroke-miterlimit:10;}
+	.st1{fill:#CDDBE0;}
+	.st2{font-family:'Helvetica-Bold';}
+	.st3{font-size:17px;}
+	.st4{fill:#CC0000;}
+	.st5{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st6{fill:#FFFFFF;}
+	.st7{fill:none;stroke:#B1B1B1;stroke-miterlimit:10;}
+	.st8{fill:#E4E4E4;stroke:#B1B1B1;stroke-miterlimit:10;}
+	.st9{fill:#B1B1B1;}
+  .st10{font-family:'ArialNarrow';}
+  
+  //hiding all markers by default
+  .marker{
+    opacity:0.0;
+  }
+  //showing the active markers
+  .found .marker{
+    opacity:1.0;
+  }
+  //opened dropdown
+  .active{
+    rect{fill:#499331;stroke:#70b65a;}
+    text{fill:#FFFFFF;}
+  }
+}

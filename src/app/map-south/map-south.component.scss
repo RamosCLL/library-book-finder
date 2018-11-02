@@ -1,0 +1,27 @@
+:host {
+  .st0{fill:#B1B1B1;}
+	.st1{font-family:'ArialNarrow';}
+	.st2{font-size:17px;}
+	.st3{font-size:16.98px;}
+	.st4{fill:none;stroke:#B1B1B1;stroke-miterlimit:10;}
+	.st5{fill:#123F55;stroke:#28576E;stroke-width:2;stroke-miterlimit:10;}
+	.st6{fill:#CDDBE0;}
+	.st7{font-family:'Helvetica-Bold';}
+	.st8{fill:#CC0000;}
+	.st9{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+  .st10{fill:#FFFFFF;}
+  
+  //hiding all markers by default
+  .marker{
+    opacity:0.0;
+  }
+  //showing the active markers
+  .found .marker{
+    opacity:1.0;
+  }
+  //opened dropdown
+  .active{
+    rect{fill:#499331;stroke:#70b65a;}
+    text{fill:#FFFFFF;}
+  }
+}
