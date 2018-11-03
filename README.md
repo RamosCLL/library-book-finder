@@ -23,7 +23,7 @@ Before setting up make sure you have removed your current proxies. Follow steps 
 1. clone repository
 
     ```
-    https://github.com/geocine/directory.git
+    https://github.com/creativescripter/library-book-finder.git
     ```
     > you will be prompted for your github credentials
 2. install dependencies
